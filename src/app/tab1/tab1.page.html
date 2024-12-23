@@ -14,4 +14,24 @@
   </ion-header>
 
   <app-explore-container name="Tab 1 page"></app-explore-container>
+
+    <!-- Button to Open the WebView -->
+    <ion-button class="zz" expand="block" (click)="openWebView()" [disabled]="isWebViewOpen">Open Web Page</ion-button>
+  
+    @if(isWebViewOpen){
+      <div class="backdrop" (click)="closeWebView()"></div>
+    }
+  
+    @if(isWebViewOpen){
+      <!-- WebView Modal -->
+      <div class="webview-container" [class.active]="isWebViewOpen" [class.hidden]="!isWebViewOpen">
+        <!-- Header to appear on top of the iframe -->
+        <!-- <div class="webview-header">
+          <ion-button fill="clear" class="close-button" (click)="closeWebView()">✖</ion-button>
+        </div> -->
+        
+        <!-- Iframe -->
+        <iframe [src]="safeUrl" class="webview-iframe"></iframe>
+      </div>
+    }
 </ion-content>
